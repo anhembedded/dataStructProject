@@ -33,7 +33,7 @@ void node_destructor(node_obj_T* this_)
     //Do nothings
 }
 
-pdBool node_compare(node_obj_T* this_, node_obj_T* otherNode)
+pdBool node_isTheSame(node_obj_T* this_, node_obj_T* otherNode)
 {
     pdBool res = 0;
     if (this_->data == otherNode->data)

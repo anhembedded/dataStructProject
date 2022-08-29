@@ -31,6 +31,9 @@ void node_destructor(node_obj_T* this_);
 /* Public Methods */
 
 /* Overloading operator */
-pdBool node_compare(node_obj_T* this_, node_obj_T* otherNode);
-
+pdBool node_isTheSame(node_obj_T* this_, node_obj_T* otherNode);
+pdBool node_greater(node_obj_T* firstOperand, node_obj_T* secondOperand);
+pdBool node_smaller(node_obj_T* firstOperand, node_obj_T* secondOperand);
+pdBool node_smallerOrEqual(node_obj_T* firstOperand, node_obj_T* secondOperand);
+pdBool node_greaterOrEqual(node_obj_T* firstOperand, node_obj_T* secondOperand);
 #endif // DATASTRUCTPROJECT_U_NODE_H
