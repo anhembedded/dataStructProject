@@ -28,6 +28,7 @@ int main() {
     }
     sList_erase(&myList,9U);
 
+    sList_destructor(&myList);
 
     std::cout << "Hello, World!" << std::endl;
     return 0;
