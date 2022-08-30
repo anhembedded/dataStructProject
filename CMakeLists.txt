@@ -6,4 +6,5 @@ set(CMAKE_C_STANDARD 11)
 
 
 
-add_executable(dataStructProject main.cpp dataStruct/u_linkedList/node/u_node.c dataStruct/u_linkedList/node/u_node.h dataStruct/u_linkedList/u_sLinkedList.c dataStruct/u_linkedList/u_sLinkedList.h)
+add_executable(dataStructProject main.cpp dataStruct/u_linkedList/node/u_node.c dataStruct/u_linkedList/node/u_node.h dataStruct/u_linkedList/u_sLinkedList.c dataStruct/u_linkedList/u_sLinkedList.h dataStruct/u_stack/u_dStack.c dataStruct/u_stack/u_dStack.h)
+include_directories(dataStruct)

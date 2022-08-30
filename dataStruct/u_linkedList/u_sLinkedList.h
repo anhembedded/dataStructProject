@@ -19,8 +19,8 @@ typedef node_obj_T sList_node_T;
 typedef node_obj_T* sList_iterator_T;
 extern sList_data_T sList_outOfSizeReturnVar;
 /**
- * @brief 
- * 
+ * @brief
+ *
  */
 typedef struct sList_obj
 {
@@ -29,10 +29,12 @@ typedef struct sList_obj
 }sList_obj_T;
 
 /* Constructor and Destructor */
-void sList_constructor(sList_obj_T* this_);
-void sList_destructor(sList_obj_T* this_);
 
+void sList_constructor(sList_obj_T* this_);
+void sList_contructorSize(sList_obj_T* this_, uint32_t sizeParam);
+void sList_destructor(sList_obj_T* this_);
 /* Public Methods */
+
 pdBool sList_isEmpty(sList_obj_T* this_);
 uint32_t sList_size(sList_obj_T* this_);
 sList_iterator_T sList_begin(sList_obj_T* this_);
@@ -45,7 +47,7 @@ sList_data_T sList_popFront(sList_obj_T* this_);
 void sList_popFrontNonReturn(sList_obj_T* this_);
 sList_iterator_T sList_advance(sList_obj_T* this_, uint32_t pos);
 void sList_erase(sList_obj_T* this_, uint32_t position);
-void sList_insert(sList_obj_T* this_, uint32_t position,sList_data_T newData);
+void sList_insert(sList_obj_T* this_, uint32_t position, sList_data_T newData);
 void sList_swap(sList_obj_T* this_, uint32_t firstPos, uint32_t secondPos);
 void sList_sortAscending(sList_obj_T* this_);
 void sList_sortDescending(sList_obj_T* this_);
@@ -53,9 +55,11 @@ void sList_reverse(sList_obj_T* this_);
 void sList_unique(sList_obj_T* this_);
 
 /* Overloading operator */
-pdBool sList_isTheSame(sList_obj_T* this_,sList_obj_T *otherOperand);
+
+pdBool sList_isTheSame(sList_obj_T* this_, sList_obj_T* otherOperand);
 
 /* static method */
+
 static sList_node_T* sList_obj_creatNewNode();
 static sList_node_T* sList_obj_creatNewNodeData(sList_data_T newData);
 static void sList_obj_freeNode(sList_iterator_T theNode);

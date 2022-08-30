@@ -27,6 +27,13 @@ void sList_constructor(sList_obj_T* this_)
 {
     this_->head = NULL;
 }
+void sList_contructorSize(sList_obj_T* this_, uint32_t sizeParam)
+{
+    sList_constructor(this_);
+    for (uint32_t i = 0; i < sizeParam;i++) {
+        sList_pushFront(this_, node_dataInit);
+    }
+}
 /**
  * @brief
  *
@@ -89,11 +96,6 @@ void sList_addFront(sList_obj_T* this_)
             this_->head = newNode;
         }
     }
-    else
-    {
-        // Malloc NULL handler
-    }
-
 }
 /**
  * @brief
@@ -187,11 +189,8 @@ sList_node_T* sList_obj_creatNewNode() {
 void sList_obj_freeNode(sList_iterator_T theNode) {
     if (theNode != NULL)
     {
+        node_destructor(theNode);
         free(theNode);
-    }
-    else
-    {
-        //NULL handler
     }
 }
 /**
@@ -227,7 +226,6 @@ sList_data_T sList_popBack(sList_obj_T* this_)
         res = sList_obj_getData(theLastElement);
         sList_obj_freeNode(theLastElement);
     }
-
     return res;
 }
 /**
@@ -272,7 +270,7 @@ sList_iterator_T sList_advance(sList_obj_T* this_, uint32_t pos) {
     sList_iterator_T  iter = sList_begin(this_);
     if (sList_isEmpty(this_))
     {
-
+        iter = NULL;
     }
     else
     {
@@ -332,7 +330,7 @@ void sList_insert(sList_obj_T* this_, uint32_t position, sList_data_T newData) {
     {
         sList_iterator_T frontIter = sList_advance(this_, position - 1);
         sList_iterator_T behindIter = sList_advance(this_, position + 1);
-        sList_iterator_T posIter = sList_obj_creatNewNode(newData);
+        sList_iterator_T posIter = sList_obj_creatNewNodeData(newData);
         frontIter->next = posIter;
         posIter->next = behindIter;
     }
@@ -355,13 +353,10 @@ sList_node_T* sList_obj_creatNewNodeData(sList_data_T newData) {
  * @param this_
  */
 void sList_destructor(sList_obj_T* this_) {
-
-    sList_iterator_T  iter;
     while (!sList_isEmpty(this_))
     {
         sList_popFrontNonReturn(this_);
     }
-
 
 }
 /**
@@ -371,13 +366,11 @@ void sList_destructor(sList_obj_T* this_) {
  */
 void sList_popFrontNonReturn(sList_obj_T* this_) {
 
-    if (sList_isEmpty(this_))
-    {
-    }
-    else
+    if (!sList_isEmpty(this_))
     {
         sList_iterator_T  oldHead = sList_begin(this_);
         this_->head = oldHead->next;
         sList_obj_freeNode(oldHead);
     }
+
 }
