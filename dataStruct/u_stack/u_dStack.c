@@ -32,6 +32,8 @@ void dStack_constructor(dStack_obj_T* this_, uint32_t capacityParam)
  */
 void dStack_destructor(dStack_obj_T* this_) {
     sList_destructor(&this_->data);
+    this_->top = 0U;
+    this_->capacity = 0U;
 }
 /**
  * @brief 

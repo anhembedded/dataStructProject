@@ -105,7 +105,10 @@ void sList_addFront(sList_obj_T* this_)
  */
 void sList_pushFront(sList_obj_T* this_, sList_data_T newData) {
     sList_addFront(this_);
-    this_->head->data = newData;
+    if (this_->head != NULL)
+    {
+        this_->head->data = newData;
+    }
 }
 /**
  * @brief
@@ -201,7 +204,7 @@ void sList_obj_freeNode(sList_iterator_T theNode) {
  */
 sList_data_T sList_popBack(sList_obj_T* this_)
 {
-    sList_data_T res = sList_outOfSizeReturnVar;
+    sList_data_T res;
     uint32_t sizeOfList = sList_size(this_);
     sList_iterator_T theLastElement;
     sList_iterator_T iter = this_->head;
@@ -244,7 +247,7 @@ sList_data_T sList_obj_getData(sList_iterator_T theNode) {
  * @return sList_data_T
  */
 sList_data_T sList_popFront(sList_obj_T* this_) {
-    sList_data_T res = sList_outOfSizeReturnVar;
+    sList_data_T res;
     if (sList_isEmpty(this_))
     {
         res = sList_outOfSizeReturnVar;

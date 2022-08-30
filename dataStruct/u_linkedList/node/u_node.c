@@ -31,6 +31,7 @@ void node_constructorInitData(node_obj_T* this_, node_data_T newData)
 void node_destructor(node_obj_T* this_)
 {
     //todo: implement that!!;
+    (void)this_;
 }
 
 pdBool node_isTheSame(node_obj_T* this_, node_obj_T* otherNode)
