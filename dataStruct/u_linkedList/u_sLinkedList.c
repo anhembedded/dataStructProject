@@ -27,7 +27,7 @@ void sList_constructor(sList_obj_T* this_)
 {
     this_->head = NULL;
 }
-void sList_contructorSize(sList_obj_T* this_, uint32_t sizeParam)
+void sList_constructorSize(sList_obj_T* this_, uint32_t sizeParam)
 {
     sList_constructor(this_);
     for (uint32_t i = 0; i < sizeParam;i++) {

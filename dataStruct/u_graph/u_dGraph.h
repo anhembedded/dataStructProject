@@ -18,7 +18,10 @@ typedef node_obj_T* dGraph_iterator_T;
 
 /*PUBLIC properties */
 
+typedef struct dGraph_obj
+{
 
+}dGraph_obj_T;
 
 /* Constructor and Destructor */
 

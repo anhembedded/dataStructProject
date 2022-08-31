@@ -26,14 +26,16 @@ sList_data_T watchData;
 sList_data_T size;
 int main() {
 
+    // section Anh
     sList_constructor(&myList);
-    sList_contructorSize(&myList2,10U);
+    sList_constructorSize(&myList2, 10U);
     dStack_constructor(&myStack,5U);
     dQueue_constructor(&myQueue);
-
+    /* hello */
     for (uint32_t i = 0U; i < 3U; ++i) {
         dQueue_push(&myQueue,i);
     }
+    // section Em
     size = dQueue_size(&myQueue);
     watchData = dQueue_pop(&myQueue);
     size = dQueue_size(&myQueue);
