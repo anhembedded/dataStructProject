@@ -60,9 +60,9 @@ pdBool sList_isTheSame(sList_obj_T* this_, sList_obj_T* otherOperand);
 
 /* static method */
 
-static sList_node_T* sList_obj_creatNewNode();
-static sList_node_T* sList_obj_creatNewNodeData(sList_data_T newData);
-static void sList_obj_freeNode(sList_iterator_T theNode);
-static sList_data_T sList_obj_getData(sList_iterator_T theNode);
+static sList_node_T* sList_s_creatNewNode();
+static sList_node_T* sList_s_creatNewNodeData(sList_data_T newData);
+static void sList_s_freeNode(sList_iterator_T theNode);
+static sList_data_T sList_s_getData(sList_iterator_T theNode);
 
 #endif //DATASTRUCTPROJECT_U_SLINKEDLIST_H

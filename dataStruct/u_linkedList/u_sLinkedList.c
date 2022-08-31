@@ -81,7 +81,7 @@ uint32_t sList_size(sList_obj_T* this_)
  */
 void sList_addFront(sList_obj_T* this_)
 {
-    sList_node_T* newNode = sList_obj_creatNewNode();
+    sList_node_T* newNode = sList_s_creatNewNode();
     sList_node_T* oldListHead = this_->head;
     if (newNode != NULL)
     {
@@ -160,7 +160,7 @@ sList_iterator_T sList_end(sList_obj_T* this_)
  */
 void sList_pushBack(sList_obj_T* this_, sList_data_T newData)
 {
-    sList_node_T* newNode = sList_obj_creatNewNode();
+    sList_node_T* newNode = sList_s_creatNewNode();
     sList_iterator_T theLastElement = NULL;
     theLastElement = sList_end(this_);
     if (theLastElement == NULL)
@@ -179,7 +179,7 @@ void sList_pushBack(sList_obj_T* this_, sList_data_T newData)
  *
  * @return sList_node_T*
  */
-sList_node_T* sList_obj_creatNewNode() {
+sList_node_T* sList_s_creatNewNode() {
     sList_node_T* newNode = malloc(sizeof(sList_node_T));
     node_constructor(newNode);
     return newNode;
@@ -189,7 +189,7 @@ sList_node_T* sList_obj_creatNewNode() {
  *
  * @param theNode
  */
-void sList_obj_freeNode(sList_iterator_T theNode) {
+void sList_s_freeNode(sList_iterator_T theNode) {
     if (theNode != NULL)
     {
         node_destructor(theNode);
@@ -215,8 +215,8 @@ sList_data_T sList_popBack(sList_obj_T* this_)
     }
     else if (sizeOfList == 1)
     {
-        res = sList_obj_getData(theLastElement);
-        sList_obj_freeNode(theLastElement);
+        res = sList_s_getData(theLastElement);
+        sList_s_freeNode(theLastElement);
         this_->head = NULL;
     }
     else
@@ -226,8 +226,8 @@ sList_data_T sList_popBack(sList_obj_T* this_)
             iter = iter->next;
         }
         iter->next = NULL;
-        res = sList_obj_getData(theLastElement);
-        sList_obj_freeNode(theLastElement);
+        res = sList_s_getData(theLastElement);
+        sList_s_freeNode(theLastElement);
     }
     return res;
 }
@@ -237,7 +237,7 @@ sList_data_T sList_popBack(sList_obj_T* this_)
  * @param theNode
  * @return sList_data_T
  */
-sList_data_T sList_obj_getData(sList_iterator_T theNode) {
+sList_data_T sList_s_getData(sList_iterator_T theNode) {
     return theNode->data;
 }
 /**
@@ -255,9 +255,9 @@ sList_data_T sList_popFront(sList_obj_T* this_) {
     else
     {
         sList_iterator_T  oldHead = sList_begin(this_);
-        res = sList_obj_getData(oldHead);
+        res = sList_s_getData(oldHead);
         this_->head = oldHead->next;
-        sList_obj_freeNode(oldHead);
+        sList_s_freeNode(oldHead);
     }
     return  res;
 }
@@ -308,7 +308,7 @@ void sList_erase(sList_obj_T* this_, uint32_t position) {
         sList_iterator_T behindIter = sList_advance(this_, position + 1);
         sList_iterator_T posIter = sList_advance(this_, position);
         frontIter->next = behindIter;
-        sList_obj_freeNode(posIter);
+        sList_s_freeNode(posIter);
     }
 }
 /**
@@ -333,7 +333,7 @@ void sList_insert(sList_obj_T* this_, uint32_t position, sList_data_T newData) {
     {
         sList_iterator_T frontIter = sList_advance(this_, position - 1);
         sList_iterator_T behindIter = sList_advance(this_, position + 1);
-        sList_iterator_T posIter = sList_obj_creatNewNodeData(newData);
+        sList_iterator_T posIter = sList_s_creatNewNodeData(newData);
         frontIter->next = posIter;
         posIter->next = behindIter;
     }
@@ -344,9 +344,9 @@ void sList_insert(sList_obj_T* this_, uint32_t position, sList_data_T newData) {
  * @param newData
  * @return sList_node_T*
  */
-sList_node_T* sList_obj_creatNewNodeData(sList_data_T newData) {
+sList_node_T* sList_s_creatNewNodeData(sList_data_T newData) {
     sList_node_T* temp;
-    temp = sList_obj_creatNewNode();
+    temp = sList_s_creatNewNode();
     temp->data = newData;
     return temp;
 }
@@ -373,7 +373,7 @@ void sList_popFrontNonReturn(sList_obj_T* this_) {
     {
         sList_iterator_T  oldHead = sList_begin(this_);
         this_->head = oldHead->next;
-        sList_obj_freeNode(oldHead);
+        sList_s_freeNode(oldHead);
     }
 
 }
