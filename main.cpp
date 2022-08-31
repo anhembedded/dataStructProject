@@ -24,7 +24,9 @@ dStack_obj_T  myStack;
 dQueue_obj_T myQueue;
 sList_data_T watchData;
 sList_data_T size;
+
 int main() {
+
 
     // section Anh
     sList_constructor(&myList);
@@ -53,6 +55,6 @@ int main() {
     dQueue_destructor(&myQueue);
 
 
-    std::cout << "Hello, World!" << std::endl;
+
     return 0;
 }
