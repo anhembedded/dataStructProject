@@ -12,7 +12,7 @@
 #ifndef DATASTRUCTPROJECT_U_SLINKEDLIST_H
 #define DATASTRUCTPROJECT_U_SLINKEDLIST_H
 
-#include "node/u_node.h"
+#include "basicDataStruct/u_linkedList/node/u_node.h"
 #include <stdlib.h>
 
 typedef node_data_T sList_data_T;

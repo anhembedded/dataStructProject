@@ -10,7 +10,7 @@
 #ifndef DATASTRUCTPROJECT_U_DGRAPH_H
 #define DATASTRUCTPROJECT_U_DGRAPH_H
 
-//#include "u_linkedList/u_sLinkedList.h"
+#include "basicDataStruct/u_linkedList/u_sLinkedList.h"
 
 typedef node_data_T dGraph_data_T;
 typedef sList_obj_T dGraph_list_T;

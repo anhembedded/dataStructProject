@@ -10,7 +10,7 @@
 
 #ifndef DATASTRUCTPROJECT_U_DQUEUE_H
 #define DATASTRUCTPROJECT_U_DQUEUE_H
-#include "u_linkedList/u_sLinkedList.h"
+#include "basicDataStruct/u_linkedList/u_sLinkedList.h"
 
 typedef node_data_T dQueue_data_T;
 typedef sList_obj_T dQueue_list_T;

@@ -11,9 +11,9 @@
 #include <iostream>
 extern "C"
 {
-#include "dataStruct/u_linkedList/u_sLinkedList.h"
-#include "dataStruct/u_stack/u_dStack.h"
-#include "dataStruct/u_queue/u_dQueue.h"
+#include "dataStruct/basicDataStruct/u_linkedList/u_sLinkedList.h"
+#include "dataStruct/basicDataStruct/u_stack/u_dStack.h"
+#include "dataStruct/basicDataStruct/u_queue/u_dQueue.h"
 }
 
 

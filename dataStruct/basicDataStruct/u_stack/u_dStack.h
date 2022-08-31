@@ -12,7 +12,7 @@
 #ifndef DATASTRUCTPROJECT_U_DSTACK_H
 #define DATASTRUCTPROJECT_U_DSTACK_H
 
-#include "u_linkedList/u_sLinkedList.h"
+#include "basicDataStruct/u_linkedList/u_sLinkedList.h"
 
  // the pos-fix of this module is dStack
 
