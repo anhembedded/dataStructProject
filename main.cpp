@@ -12,6 +12,7 @@
 #include <iostream>
 sList_obj_T* adjListOfPeople;
 
+
 pair_T n1 [ 7 ] = { {1, 2}, // 0 1
                 {1, 3}, // 0 2
                 {2, 4}, // 1 3
@@ -34,25 +35,27 @@ void printAdjacentList( sList_obj_T* arrayList , uint32_t size )
     }
 }
 
-
-
-void graph( sList_obj_T* adjListOfPeopleParam , dataCovid_T* dataCovid )
+void makeGraph(dataCovid_T * dataCovid)
 {
-    dStack_obj_T peopleStack;
-    sList_obj_T* listOfGraph;
-    dStack_constructor( &peopleStack , dataCovid->numbOfPeople );
-    for ( uint32_t i = 0; i < dataCovid->numbOfPeople; i++ )
-    {
-        dStack_push( &peopleStack , i );
-    }
+    sList_obj_T  nonGroupPeople;
+    sList_obj_T thisGraph;
+    sList_constructor(&thisGraph);
 
-    while ( !dStack_isEmpty( &peopleStack ) )
+    sList_constructor(&nonGroupPeople);
+    for(uint32_t i = 0; i < dataCovid->numbOfPeople; i++)
     {
-        listOfGraph = ( sList_obj_T* ) malloc( sizeof( sList_obj_T ) );
-        sList_pushFront( listOfGraph , dStack_pop( &peopleStack ) );
+        sList_pushBack(&nonGroupPeople,i);
     }
+   thisGraph =  group_BFT(2, adjListOfPeople, 10);
+}
 
-    dStack_destructor( &peopleStack );
+
+
+void f0Brand(sList_obj_T *group, dataCovid_T *dataCovid)
+{
+
+
+
 }
 
 int main( ) {
@@ -61,7 +64,9 @@ int main( ) {
     data1 = dataCovidInit( 10 , n1 , 7 , n1ArrayF0 , 3 );
     dataCovidPrint( &data1 );
     adjListOfPeople = peopleInit( &data1 );
-    dGraph_s_groupAdjList(0,adjListOfPeople,10);
+
+    makeGraph(&data1);
+
 //    printAdjacentList( adjListOfPeople , 10 );
     return 0;
 }

@@ -408,3 +408,35 @@ pdBool sList_find(sList_obj_T *this_, sList_data_T key) {
     }
     return res;
 }
+
+sList_obj_T sList_copy(sList_obj_T *this_) {
+    sList_obj_T tempList;
+    sList_constructor(&tempList);
+    for(uint32_t i = 0; i < sList_size(this_); i++)
+    {
+        sList_data_T tempData;
+        tempData = sList_advance(this_,i)->data;
+        sList_pushBack(&tempList,tempData);
+    }
+    return tempList;
+}
+
+sList_obj_T sList_move(sList_obj_T *this_) {
+    sList_obj_T result;
+    sList_constructor(&result);
+    result = sList_copy(this_);
+    sList_destructor(this_);
+    return result;
+}
+
+void sList_delete(sList_obj_T *this_, sList_data_T key)
+{
+    if(!sList_isEmpty(this_))
+    {
+        uint32_t counter = 0;
+        uint32_t sizeOfList = sList_size(this_);
+
+
+
+    }
+}

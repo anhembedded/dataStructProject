@@ -25,7 +25,6 @@ extern sList_data_T sList_outOfSizeReturnVar;
 typedef struct sList_obj
 {
     sList_node_T* head;
-    uint32_t size;
 }sList_obj_T;
 
 /* Constructor and Destructor */
@@ -53,14 +52,15 @@ void sList_sortAscending(sList_obj_T* this_);
 void sList_sortDescending(sList_obj_T* this_);
 void sList_reverse(sList_obj_T* this_);
 void sList_unique(sList_obj_T* this_);
-pdBool sList_find(sList_obj_T *this_,sList_data_T key );
+pdBool sList_find(sList_obj_T *this_,sList_data_T key);
 void sList_print(sList_obj_T* this_);
+void sList_delete(sList_obj_T* this_, sList_data_T key);
 
 /* Overloading operator */
 
 pdBool sList_isTheSame(sList_obj_T* this_, sList_obj_T* otherOperand);
-sList_obj_T *sList_move(sList_obj_T* this_);
-sList_obj_T *sList_copy(sList_obj_T* this_);
+sList_obj_T sList_move(sList_obj_T* this_);
+sList_obj_T sList_copy(sList_obj_T* this_);
 
 /* static method */
 

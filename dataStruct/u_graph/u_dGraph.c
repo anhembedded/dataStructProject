@@ -12,32 +12,39 @@
 #include "u_dGraph.h"
 #include <stdlib.h>
 
-void dGraph_BFT(vertices_T key,sList_obj_T *arrayOfAdjList, uint32_t sizeOfAdjList ) {
-
+sList_obj_T group_BFT(vertices_T key, sList_obj_T *arrayOfAdjList, uint32_t sizeOfAdjList )
+{
     dQueue_obj_T visited_queue;
     dQueue_obj_T tempQueue;
-    dQueue_obj_T thisGraph;
+    sList_obj_T thisGroup;
     dQueue_constructor(&visited_queue);
     dQueue_constructor(&tempQueue);
-    dQueue_constructor(&thisGraph);
+    sList_constructor(&thisGroup);
 
     dQueue_push(&tempQueue, key);
     dQueue_push(&visited_queue,key);
+    sList_pushBack(&thisGroup, key);
 
     while (!dQueue_isEmpty(&tempQueue))
     {
         dQueue_data_T temp = dQueue_pop(&tempQueue);
-        dQueue_push(&thisGraph,temp);
 
-       // if(dGraph_s_isHadAdj())
+        dGraph_s_getAdjIntoQueue( &arrayOfAdjList[temp],&tempQueue,&visited_queue);
+        uint32_t sizeOfTempQueue = dQueue_size(&tempQueue);
 
-        for(uint32_t i = 0; i<sizeOfAdjList; i++)
+        for(uint32_t i = 0; i < sizeOfTempQueue;i++)
         {
-
+            sList_data_T tempData = sList_advance(&tempQueue.data,i)->data;
+           if(!dQueue_find(&visited_queue, tempData))
+           {
+               dQueue_push(&visited_queue,tempData);
+               sList_pushBack(&thisGroup, tempData);
+           }
         }
     }
-
     dQueue_destructor(&visited_queue);
+    dQueue_destructor(&tempQueue);
+    return thisGroup;
 }
 
 sList_obj_T *dGraph_s_adjacentListInit(pair_T *arrayOfRelationPairs, uint32_t numberOfRelationPairs) {
@@ -63,11 +70,6 @@ sList_obj_T *dGraph_s_adjacentListInit(pair_T *arrayOfRelationPairs, uint32_t nu
 }
 
 
-void dGraph_s_getAdjIntoQueue(vertices_T key, sList_obj_T *arrayOfAdjList, uint32_t sizeOfAdjList, dQueue_obj_T *adjQueue)
-{
-
-}
-
 pdBool dGraph_s_isHadAdj(sList_obj_T *vertices) {
     pdBool res = 0;
     if(sList_size(vertices) > 1)
@@ -77,18 +79,40 @@ pdBool dGraph_s_isHadAdj(sList_obj_T *vertices) {
     return res;
 }
 
-void dGraph_s_groupAdjList(sList_data_T key, sList_obj_T *arrayOfAdjList, uint32_t sizeOfAdjList)
+sList_obj_T dGraph_s_groupAdjList(sList_data_T key, sList_obj_T *arrayOfAdjList, uint32_t sizeOfAdjList)
 {
-    sList_obj_T graph;
-    sList_constructor(&graph);
+    sList_obj_T tempRes;
+    sList_constructor(&tempRes);
 
     for(uint32_t i = 0; i < sizeOfAdjList; i++ )
     {
         if(sList_find(&arrayOfAdjList[i], key))
         {
-            sList_pushFront(&graph,i);
+            sList_pushFront(&tempRes, i);
         }
     }
-    sList_print(&graph);
+    return tempRes;
 }
+
+void dGraph_s_getAdjIntoQueue(sList_obj_T *AdjList, dQueue_obj_T *queueAdded, dQueue_obj_T* visited_queue ) {
+
+    uint32_t sizeOfAdjList = sList_size(AdjList);
+    if(sizeOfAdjList == 0)
+    {
+        return;
+    } else
+    {
+        for(uint32_t i = 0; i <sizeOfAdjList; i++)
+        {
+            sList_data_T tempData = sList_advance(AdjList,i)->data;
+            if(!dQueue_find(visited_queue, tempData))
+            {
+                dQueue_push(queueAdded,tempData);
+            }
+
+        }
+    }
+
+}
+
 
