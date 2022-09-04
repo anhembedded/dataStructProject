@@ -34,6 +34,14 @@ void printAdjacentList( sList_obj_T* arrayList , uint32_t size )
         printf( "\n" );
     }
 }
+void f0Brand(sList_obj_T *group, dataCovid_T *dataCovid)
+{
+    dQueue_obj_T f1_queue;
+    dQueue_constructor(&f1_queue);
+    dGraph_s_getAdj(&adjListOfPeople[2],&f1_queue);
+
+
+}
 
 void makeGraph(dataCovid_T * dataCovid)
 {
@@ -47,16 +55,12 @@ void makeGraph(dataCovid_T * dataCovid)
         sList_pushBack(&nonGroupPeople,i);
     }
    thisGraph =  group_BFT(2, adjListOfPeople, 10);
+    f0Brand(&thisGraph,dataCovid );
 }
 
 
 
-void f0Brand(sList_obj_T *group, dataCovid_T *dataCovid)
-{
 
-
-
-}
 
 int main( ) {
 
@@ -67,7 +71,7 @@ int main( ) {
 
     makeGraph(&data1);
 
-//    printAdjacentList( adjListOfPeople , 10 );
+
     return 0;
 }
 

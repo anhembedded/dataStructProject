@@ -115,4 +115,19 @@ void dGraph_s_getAdjIntoQueue(sList_obj_T *AdjList, dQueue_obj_T *queueAdded, dQ
 
 }
 
+void dGraph_s_getAdj(sList_obj_T *AdjList, dQueue_obj_T *queueAdded) {
+    uint32_t sizeOfAdjList = sList_size(AdjList);
+    if(sizeOfAdjList == 0)
+    {
+        return;
+    } else
+    {
+        for(uint32_t i = 0; i <sizeOfAdjList; i++)
+        {
+            sList_data_T tempData = sList_advance(AdjList,i)->data;
+            dQueue_push(queueAdded,tempData);
+        }
+    }
+}
+
 
