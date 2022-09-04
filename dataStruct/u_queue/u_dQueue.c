@@ -52,5 +52,5 @@ pdBool dQueue_find(dQueue_obj_T *this_, dQueue_data_T key) {
             }
         }
     }
-    return 0;
+    return res;
 }

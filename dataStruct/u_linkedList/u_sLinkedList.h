@@ -53,11 +53,14 @@ void sList_sortAscending(sList_obj_T* this_);
 void sList_sortDescending(sList_obj_T* this_);
 void sList_reverse(sList_obj_T* this_);
 void sList_unique(sList_obj_T* this_);
+pdBool sList_find(sList_obj_T *this_,sList_data_T key );
 void sList_print(sList_obj_T* this_);
 
 /* Overloading operator */
 
 pdBool sList_isTheSame(sList_obj_T* this_, sList_obj_T* otherOperand);
+sList_obj_T *sList_move(sList_obj_T* this_);
+sList_obj_T *sList_copy(sList_obj_T* this_);
 
 /* static method */
 

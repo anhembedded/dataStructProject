@@ -381,9 +381,30 @@ void sList_popFrontNonReturn(sList_obj_T* this_) {
 
 void sList_print(sList_obj_T *this_) {
     uint32_t sizeOfList = sList_size(this_);
+    printf("\n SList_print: \n");
     for (uint32_t i = 0U; i < sizeOfList; i++)
     {
         uint32_t temp =  sList_advance(this_,i)->data;
-        printf("  %d",temp);
+        printf(" | %d",temp);
     }
+}
+
+pdBool sList_find(sList_obj_T *this_, sList_data_T key) {
+    pdBool res = 0;
+    if(sList_isEmpty(this_))
+    {
+        res = 0;
+    } else
+    {
+        uint32_t sizeOfList = sList_size(this_);
+        for(uint32_t i = 0; i < sizeOfList; i++)
+        {
+            if(sList_advance(this_, i)->data == key)
+            {
+                res = 1;
+                break;
+            }
+        }
+    }
+    return res;
 }

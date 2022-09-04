@@ -15,34 +15,27 @@
 void dGraph_BFT(vertices_T key,sList_obj_T *arrayOfAdjList, uint32_t sizeOfAdjList ) {
 
     dQueue_obj_T visited_queue;
-    dQueue_obj_T queue;
+    dQueue_obj_T tempQueue;
     dQueue_obj_T thisGraph;
     dQueue_constructor(&visited_queue);
-    dQueue_constructor(&queue);
+    dQueue_constructor(&tempQueue);
     dQueue_constructor(&thisGraph);
 
-    dQueue_push(&queue,key);
+    dQueue_push(&tempQueue, key);
     dQueue_push(&visited_queue,key);
 
-    while (!dQueue_isEmpty(&queue))
+    while (!dQueue_isEmpty(&tempQueue))
     {
-        dQueue_data_T temp = dQueue_pop(&queue);
+        dQueue_data_T temp = dQueue_pop(&tempQueue);
         dQueue_push(&thisGraph,temp);
 
-        //while()
+       // if(dGraph_s_isHadAdj())
 
         for(uint32_t i = 0; i<sizeOfAdjList; i++)
         {
 
-
-
         }
     }
-
-
-
-
-
 
     dQueue_destructor(&visited_queue);
 }
@@ -67,5 +60,35 @@ sList_obj_T *dGraph_s_adjacentListInit(pair_T *arrayOfRelationPairs, uint32_t nu
         // todo: sList_Unified
     }
     return arrayToListPeople;
+}
+
+
+void dGraph_s_getAdjIntoQueue(vertices_T key, sList_obj_T *arrayOfAdjList, uint32_t sizeOfAdjList, dQueue_obj_T *adjQueue)
+{
+
+}
+
+pdBool dGraph_s_isHadAdj(sList_obj_T *vertices) {
+    pdBool res = 0;
+    if(sList_size(vertices) > 1)
+    {
+        res = 1;
+    }
+    return res;
+}
+
+void dGraph_s_groupAdjList(sList_data_T key, sList_obj_T *arrayOfAdjList, uint32_t sizeOfAdjList)
+{
+    sList_obj_T graph;
+    sList_constructor(&graph);
+
+    for(uint32_t i = 0; i < sizeOfAdjList; i++ )
+    {
+        if(sList_find(&arrayOfAdjList[i], key))
+        {
+            sList_pushFront(&graph,i);
+        }
+    }
+    sList_print(&graph);
 }
 
