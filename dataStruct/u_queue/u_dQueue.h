@@ -33,6 +33,8 @@ pdBool  dQueue_isEmpty(dQueue_obj_T * this_);
 void dQueue_push(dQueue_obj_T * this_, dQueue_data_T newData);
 dQueue_data_T dQueue_pop(dQueue_obj_T *this_);
 uint32_t  dQueue_size(dQueue_obj_T *this_);
+pdBool dQueue_find(dQueue_obj_T *this_,dQueue_data_T key );
+
 
 /* Overloading operator */
 /* static method */

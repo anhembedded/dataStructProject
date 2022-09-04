@@ -31,7 +31,7 @@ typedef struct sList_obj
 /* Constructor and Destructor */
 
 void sList_constructor(sList_obj_T* this_);
-void sList_contructorSize(sList_obj_T* this_, uint32_t sizeParam);
+void sList_constructorSize(sList_obj_T* this_, uint32_t sizeParam);
 void sList_destructor(sList_obj_T* this_);
 /* Public Methods */
 
@@ -53,6 +53,7 @@ void sList_sortAscending(sList_obj_T* this_);
 void sList_sortDescending(sList_obj_T* this_);
 void sList_reverse(sList_obj_T* this_);
 void sList_unique(sList_obj_T* this_);
+void sList_print(sList_obj_T* this_);
 
 /* Overloading operator */
 

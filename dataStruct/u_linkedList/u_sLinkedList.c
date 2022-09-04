@@ -11,6 +11,7 @@
 
 #include "u_sLinkedList.h"
 #include <stdlib.h>
+#include <stdio.h>
 
  /**
   * @brief
@@ -27,7 +28,7 @@ void sList_constructor(sList_obj_T* this_)
 {
     this_->head = NULL;
 }
-void sList_contructorSize(sList_obj_T* this_, uint32_t sizeParam)
+void sList_constructorSize(sList_obj_T* this_, uint32_t sizeParam)
 {
     sList_constructor(this_);
     for (uint32_t i = 0; i < sizeParam;i++) {
@@ -376,4 +377,13 @@ void sList_popFrontNonReturn(sList_obj_T* this_) {
         sList_s_freeNode(oldHead);
     }
 
+}
+
+void sList_print(sList_obj_T *this_) {
+    uint32_t sizeOfList = sList_size(this_);
+    for (uint32_t i = 0U; i < sizeOfList; i++)
+    {
+        uint32_t temp =  sList_advance(this_,i)->data;
+        printf("  %d",temp);
+    }
 }

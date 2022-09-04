@@ -12,10 +12,8 @@
 #include <stdint.h>
 
 typedef  size_t pdBool;
-
 typedef uint32_t node_data_T;
 extern const node_data_T node_dataInit;
-
 
 typedef struct u_node_obj
 {

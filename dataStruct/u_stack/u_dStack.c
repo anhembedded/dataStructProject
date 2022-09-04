@@ -21,7 +21,7 @@ const dStack_data_T dStack_outOfSize = UINT32_MAX;
  */
 void dStack_constructor(dStack_obj_T* this_, uint32_t capacityParam)
 {
-    sList_contructorSize(&this_->data, capacityParam);
+    sList_constructorSize(&this_->data, capacityParam);
     this_->capacity = capacityParam;
     this_->top = dStack_emptyStack;
 }
