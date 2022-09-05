@@ -15,18 +15,14 @@
 
 #include <iostream>
 
-
-
-
 int main( ) {
 
-    dataCovid_T data1;
-    data1 = dataCovidInit(data_numberPeople , data_pair ,
-                          data_numberOfContactedPair , data_ArrayF0 , data_numberF0);
+    dataCovid_T dataCovid;
+    dataCovid = dataCovidInit(data_numberPeople , data_pair ,
+                              data_numberOfContactedPair , data_ArrayF0 , data_numberF0);
 
-
-    adjListOfPeople = peopleInit( &data1 );
-    creatGroupOfPeople(&data1);
+    adjListOfPeople = peopleInit( &dataCovid );
+    creatGroupOfPeople(&dataCovid);
 
     return 0;
 }
