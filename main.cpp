@@ -39,23 +39,6 @@ void f0Brand(sList_obj_T *group, dataCovid_T *dataCovid)
     dQueue_obj_T f1_queue;
     dQueue_constructor(&f1_queue);
     dGraph_s_getAdj(&adjListOfPeople[2],&f1_queue);
-
-
-}
-
-void makeGraph(dataCovid_T * dataCovid)
-{
-    sList_obj_T  nonGroupPeople;
-    sList_obj_T thisGraph;
-    sList_constructor(&thisGraph);
-
-    sList_constructor(&nonGroupPeople);
-    for(uint32_t i = 0; i < dataCovid->numbOfPeople; i++)
-    {
-        sList_pushBack(&nonGroupPeople,i);
-    }
-   thisGraph =  group_BFT(2, adjListOfPeople, 10);
-    f0Brand(&thisGraph,dataCovid );
 }
 
 
@@ -133,6 +116,64 @@ sList_obj_T* peopleInit( dataCovid_T* dataCovid ) {
     return arrayToListPeople;
 }
 
+
+void makeGraph(dataCovid_T *dataCovid) {
+    uint32_t *nonGroupPeople = static_cast<uint32_t *>(malloc(sizeof(uint32_t) * dataCovid->numbOfPeople));
+    uint32_t sizeGroup =0;
+    sList_obj_T *groupOfContractedPeople;
+
+    for(uint32_t i = 0; i < dataCovid->numbOfPeople; i++)
+    {
+        nonGroupPeople[i] = 0;
+    }
+    while(!isAllPeopleBeGrouped(nonGroupPeople,dataCovid->numbOfPeople))
+    {
+        groupOfContractedPeople = (sList_obj_T *)(malloc(sizeof(sList_obj_T)));
+        sList_constructor(&groupOfContractedPeople[sizeGroup]);
+        uint32_t  personIsNotGrouped = whichPersonIsNotGrouped(nonGroupPeople, dataCovid->numbOfPeople);
+        groupOfContractedPeople[sizeGroup] =  group_BFT(personIsNotGrouped, adjListOfPeople, 10);
+        updatePersonIsGrouped(&groupOfContractedPeople[sizeGroup], nonGroupPeople, dataCovid->numbOfPeople);
+    }
+    sList_obj_T *watchList = groupOfContractedPeople;
+
+}
+pdBool isAllPeopleBeGrouped(const uint32_t *peopleArray, uint32_t numbOfPeople)
+{
+    pdBool result = 1U;
+    for (int i = 0; i < numbOfPeople; i++)
+    {
+       if(peopleArray[i] == 0U)
+       {
+           result = 0U;
+       }
+
+    }
+    return (result);
+}
+
+uint32_t whichPersonIsNotGrouped(const uint32_t *peopleArray, uint32_t numbOfPeople)
+{
+    uint32_t  personIsNotGrouped = UINT32_MAX;
+    for (int i = 0; i < numbOfPeople; i++)
+    {
+        if(peopleArray[i] == 0U)
+        {
+            personIsNotGrouped = i;
+            break;
+        }
+
+    }
+    return personIsNotGrouped;
+}
+void updatePersonIsGrouped(sList_obj_T *groupList, uint32_t *nonGroupPeopleArray, uint32_t numbOfPeople)
+{
+    uint32_t sizeOfThisGraph = sList_size(groupList);
+    for(uint32_t i = 0; i < sizeOfThisGraph; i++)
+    {
+        uint32_t temp = sList_advance(groupList,i)->data;
+        nonGroupPeopleArray[temp]  = 1;
+    }
+}
 
 
 
