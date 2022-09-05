@@ -40,6 +40,7 @@ sList_iterator_T sList_begin(sList_obj_T* this_);
 sList_iterator_T sList_end(sList_obj_T* this_);
 void sList_addFront(sList_obj_T* this_);
 void sList_pushFront(sList_obj_T* this_, sList_data_T newData);
+void sList_pushFrontIfNotHad(sList_obj_T* this_, sList_data_T newData);
 void sList_pushBack(sList_obj_T* this_, sList_data_T newData);
 sList_data_T sList_popBack(sList_obj_T* this_);
 sList_data_T sList_popFront(sList_obj_T* this_);

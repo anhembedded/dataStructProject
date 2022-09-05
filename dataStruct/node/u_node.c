@@ -30,7 +30,7 @@ void node_constructorInitData(node_obj_T* this_, node_data_T newData)
 
 void node_destructor(node_obj_T* this_)
 {
-    //todo: implement that!!;
+    //todo: implement that!! if node elements need free;
     (void)this_;
 }
 

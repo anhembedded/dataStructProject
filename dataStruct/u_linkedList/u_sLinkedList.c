@@ -440,3 +440,22 @@ void sList_delete(sList_obj_T *this_, sList_data_T key)
 
     }
 }
+
+void sList_pushFrontIfNotHad(sList_obj_T *this_, sList_data_T newData)
+{
+    pdBool flags = 0U;
+    uint32_t sizeOfList = sList_size(this_);
+    for(uint32_t i = 0U; i< sizeOfList ; i++)
+    {
+        sList_data_T  tempData = sList_advance(this_,i)->data;
+        if(tempData ==newData )
+        {
+            flags =1;
+        }
+    }
+    if(flags ==0)
+    {
+        sList_pushFront(this_,newData);
+    }
+
+}
