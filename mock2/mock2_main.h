@@ -41,7 +41,6 @@ pdBool isAllPeopleBeGrouped(const uint32_t *peopleArray, uint32_t numbOfPeople);
 uint32_t whichPersonIsNotGrouped(const uint32_t *peopleArray, uint32_t numbOfPeople);
 void updatePersonIsGrouped(sList_obj_T *groupList, uint32_t *nonGroupPeopleArray, uint32_t numbOfPeople);
 void creatGroupOfPeople(dataCovid_T * dataCovid);
-//void dataCovidPrint( dataCovid_T* data );
 dataCovid_T dataCovidInit( uint32_t numbOfPeople , pair_T* relationArray , uint32_t relationArraySize , uint32_t* f0Array , uint32_t f0ArraySize );
 sList_obj_T* peopleInit( dataCovid_T* dataCovid );
 

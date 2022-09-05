@@ -78,7 +78,7 @@ void creatGroupOfPeople(dataCovid_T *dataCovid) {
         uint32_t personIsNotGrouped;
         sList_constructor(&groupOfContractedPeople[sizeGroup]);
         personIsNotGrouped = whichPersonIsNotGrouped(nonGroupPeople, dataCovid->numbOfPeople);
-        groupOfContractedPeople[sizeGroup] =  group_BFT(personIsNotGrouped, adjListOfPeople, 10);
+        groupOfContractedPeople[sizeGroup] = dGraph_s_groupBFT(personIsNotGrouped, adjListOfPeople, 10);
         updatePersonIsGrouped(&groupOfContractedPeople[sizeGroup], nonGroupPeople, dataCovid->numbOfPeople);
         sizeGroup++;
     }

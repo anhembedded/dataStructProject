@@ -12,7 +12,7 @@
 #include "u_dGraph.h"
 #include <stdlib.h>
 
-sList_obj_T group_BFT(vertices_T key, sList_obj_T *arrayOfAdjList, uint32_t sizeOfAdjList )
+sList_obj_T dGraph_s_groupBFT(vertices_T key, sList_obj_T *arrayOfAdjList, uint32_t sizeOfAdjList )
 {
     dQueue_obj_T visited_queue;
     dQueue_obj_T tempQueue;

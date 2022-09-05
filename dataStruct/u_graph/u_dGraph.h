@@ -37,10 +37,7 @@ typedef struct dGraph_obj
 void dGraph_constructor(dGraph_ogj_T * this_);
 void dGraph_destructor(dGraph_ogj_T * this_);
 
-
 /* Public Methods */
-
-sList_obj_T group_BFT(vertices_T key, sList_obj_T *arrayOfAdjList, uint32_t sizeOfAdjList );
 
 
 /* static method */
@@ -49,9 +46,10 @@ sList_obj_T * dGraph_s_adjacentListInit (pair_T *arrayOfRelationPairs, uint32_t 
 pdBool  dGraph_s_isVisited (dQueue_obj_T *visited_queue, vertices_T key);
 void dGraph_s_getAdjIntoQueue(sList_obj_T *AdjList, dQueue_obj_T *queueAdded, dQueue_obj_T* visited_queue );
 void dGraph_s_getAdj(sList_obj_T *AdjList, dQueue_obj_T *queueAdded);
-
+sList_obj_T dGraph_s_groupBFT(vertices_T key, sList_obj_T *arrayOfAdjList, uint32_t sizeOfAdjList );
 pdBool dGraph_s_isHadAdj(sList_obj_T *vertices);
-sList_obj_T dGraph_s_groupAdjList(sList_data_T key, sList_obj_T *arrayOfAdjList, uint32_t sizeOfAdjList);
 
+//Breadth First Search
+sList_obj_T dGraph_s_groupAdjList(sList_data_T key, sList_obj_T *arrayOfAdjList, uint32_t sizeOfAdjList);
 
 #endif //DATASTRUCTPROJECT_U_DGRAPH_H
